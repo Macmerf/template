@@ -1,6 +1,139 @@
-$body-color: slateblue;
+$body-color: #292a2b;
+$card-color: #ffff;
+
+@import url("./reset.scss");
+
+@font-face {
+  font-family: Inter;
+  src: url("../fonts/Inter Bold.eot");
+  src: url("../fonts/Inter Bold.eot?#iefix") format("embedded-opentype");
+  src: url("../fonts/Inter Bold.woff2") format("woff2");
+  src: url("../fonts/Inter Bold.woff") format("woff");
+  src: url("../fonts/Inter Bold.svg#Inter Bold") format("svg");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0020-E0D0;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url("../fonts/Inter Regular.eot");
+  src:
+    url("../fonts/Inter Regular.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Inter Regular.woff2") format("woff2"),
+    url("../fonts/Inter Regular.woff") format("woff"),
+    url("../fonts/Inter Regular.svg#Inter Regular") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0020-E0D0;
+}
+
+@font-face {
+  font-family: "Inter Black";
+  src: url("../fonts/Inter Black.eot");
+  src:
+    url("../fonts/Inter Black.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Inter Black.woff2") format("woff2"),
+    url("../fonts/Inter Black.woff") format("woff"),
+    url("../fonts/Inter Black.svg#Inter Black") format("svg");
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0020-E0D0;
+}
 
 body {
   color: $body-color;
-  font-family: sans-serif;
+  font-family: Inter, "Inter Black", sans-serif;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 50px;
+
+    .holder-title {
+      text-align: center;
+      max-width: 648px;
+      font-style: normal;
+      font-weight: 900;
+      font-size: 40px;
+      line-height: 50px;
+      margin-bottom: 44px;
+    }
+
+    .card-wrapper {
+      overflow-x: scroll;
+      width: 100%;
+    }
+
+    .card-holder {
+      min-width: 1180px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      min-height: 520px;
+
+      .card {
+        color: $card-color;
+        min-height: 249px;
+        min-width: 380px;
+        flex-basis: calc((100% / 3) - 40px);
+        background: #142346;
+        border-radius: 40px;
+        overflow: hidden;
+        position: relative;
+        padding-top: 40px;
+        padding-left: 25px;
+        box-sizing: border-box;
+
+        img {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+        }
+
+        .card-title {
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 24px;
+          max-width: 56%;
+          margin-bottom: 10px;
+        }
+
+        .card-description {
+          font-size: 16px;
+          line-height: 22px;
+          max-width: 52%;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1281px) {
+    .card-holder {
+      max-width: 100%;
+    }
+
+    .card-wrapper {
+      overflow-x: unset !important;
+    }
+
+    .card {
+      min-height: calc(100% / 2);
+      padding-bottom: 25px;
+    }
+
+    .card-title {
+      font-size: 1.6vw !important;
+      line-height: 2vw !important;
+    }
+
+    .card-description {
+      font-size: 1.25vw !important;
+      line-height: 1.7vw !important;
+    }
+  }
 }
